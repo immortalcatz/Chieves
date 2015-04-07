@@ -1,0 +1,14 @@
+# Gradle
+/.gradle
+/build
+
+# Intellij
+/out
+/.idea
+/*.iml
+/*.ipr
+/*.iws
+
+# General
+eclipse/
+sources/
