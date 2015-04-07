@@ -2,7 +2,7 @@ package me.mrkirby153.chieves.reference;
 
 public class Reference {
 
-    public static final String MOD_ID = "Chieves";
+    public static final String MOD_ID = "chieves";
     public static final String VERSION = "@VERSION@";
     public static final String MOD_NAME = "'Chieves";
 
