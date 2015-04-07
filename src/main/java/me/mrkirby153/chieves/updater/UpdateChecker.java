@@ -9,8 +9,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class UpdateChecker {
 
-    public static final String updateCheckUrl = "http://mrkirby153.tk:8080/job/Chieves/lastSuccessfulBuild/api/json"; // Use jenkins
-    public static final String latestBuildNumber = "http://mrkirby153.tk:8080/job/Chieves/lastSuccessfulBuild/buildNumber";
+    public static final String updateCheckFile = "https://dl.dropboxusercontent.com/u/121954827/modding/Chieves/version.json";
     public static final String updateDownloadUrl = ""; // Download from jenkins?
 
     public static boolean updateDone = false;
@@ -19,8 +18,6 @@ public class UpdateChecker {
     public static boolean notifiedPlayer = false;
     public static int newVersion = -1;
 
-    public void init() {
-        new ThreadUpdateChecker();
     public void init(Channel channel) {
         new ThreadUpdateChecker(channel);
         FMLCommonHandler.instance().bus().register(this);
@@ -44,5 +41,4 @@ public class UpdateChecker {
         STABLE,
         DEV;
     }
-
 }
