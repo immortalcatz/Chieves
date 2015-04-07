@@ -38,4 +38,9 @@ public class UpdateChecker {
         }
     }
 
+    public enum Channel {
+        STABLE,
+        DEV;
+    }
+
 }
