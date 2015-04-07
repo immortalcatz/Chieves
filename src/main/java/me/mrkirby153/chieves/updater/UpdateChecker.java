@@ -18,8 +18,8 @@ public class UpdateChecker {
     public static boolean notifiedPlayer = false;
     public static int newVersion = -1;
 
-    public void init(Channel channel) {
-        new ThreadUpdateChecker(channel);
+    public void init() {
+        new ThreadUpdateChecker();
         FMLCommonHandler.instance().bus().register(this);
     }
 
@@ -35,10 +35,5 @@ public class UpdateChecker {
             player.addChatComponentMessage(new ChatComponentText("UPDATE FAILED!"));
             notifiedPlayer = true;
         }
-    }
-
-    public enum Channel {
-        STABLE,
-        DEV;
     }
 }

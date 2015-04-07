@@ -1,7 +1,6 @@
 package me.mrkirby153.chieves.proxy;
 
 import me.mrkirby153.chieves.config.ConfigHandler;
-import me.mrkirby153.chieves.config.Settings;
 import me.mrkirby153.chieves.updater.UpdateChecker;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
@@ -12,6 +11,6 @@ public class ClientProxy extends CommonProxy{
         // Load configuration settings
         ConfigHandler.init(event.getSuggestedConfigurationFile());
         UpdateChecker checker = new UpdateChecker();
-        checker.init(Settings.Version.versionChannel);
+        checker.init();
     }
 }

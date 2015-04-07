@@ -1,7 +1,6 @@
 package me.mrkirby153.chieves.config;
 
 import me.mrkirby153.chieves.reference.Reference;
-import me.mrkirby153.chieves.updater.UpdateChecker;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -27,16 +26,6 @@ public class ConfigHandler {
         Property enableVersionCheckingProperty = configuration.get(Configuration.CATEGORY_GENERAL, "versionCheck", Settings.Version.enableVersionCheckDefault);
         enableVersionCheckingProperty.comment = "Have the mod automatically check for new versions and notify the player if a new version is found. Default: " + Settings.Version.enableVersionCheckDefault;
         Settings.Version.enableVersionCheck = enableVersionCheckingProperty.getBoolean();
-
-        Property versionChannelProperty = configuration.get(Configuration.CATEGORY_GENERAL, "versionChannel", Settings.Version.versionChannelDefault.toString());
-        versionChannelProperty.comment = "Which release channel to use for update checking. Channels are STABLE, DEV.Default: " + Settings.Version.versionChannelDefault.toString();
-        try {
-            Settings.Version.versionChannel = UpdateChecker.Channel.valueOf(versionChannelProperty.getString().toUpperCase());
-        } catch (Exception e) {
-            e.printStackTrace();
-            Settings.Version.versionChannel = Settings.Version.versionChannelDefault;
-            versionChannelProperty.set(Settings.Version.versionChannelDefault.toString());
-        }
 
         // General
         Property debugProperty = configuration.get(Configuration.CATEGORY_GENERAL, "debug", Settings.General.debugDefault);
