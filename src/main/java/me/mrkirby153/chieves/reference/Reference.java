@@ -8,4 +8,5 @@ public class Reference {
 
     public static final String SERVER_PROXY_CLASS = "me.mrkirby153.chieves.proxy.CommonProxy";
     public static final String CLIENT_PROXY_CLASS = "me.mrkirby153.chieves.proxy.ClientProxy";
+    public static final String GUI_FACTORY_CLASS = "me.mrkirby153.chieves.config.GuiFactory";
 }

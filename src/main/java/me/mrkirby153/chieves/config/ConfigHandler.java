@@ -1,0 +1,55 @@
+package me.mrkirby153.chieves.config;
+
+import me.mrkirby153.chieves.reference.Reference;
+import me.mrkirby153.chieves.updater.UpdateChecker;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
+import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
+import java.io.File;
+
+public class ConfigHandler {
+
+    public static Configuration configuration;
+
+    public static void init(File configFile) {
+        if (configuration == null) {
+            configuration = new Configuration(configFile);
+            loadConfig();
+        }
+        FMLCommonHandler.instance().bus().register(new ConfigHandler());
+    }
+
+    private static void loadConfig() {
+        // Version checking
+        Property enableVersionCheckingProperty = configuration.get(Configuration.CATEGORY_GENERAL, "versionCheck", Settings.Version.enableVersionCheckDefault);
+        enableVersionCheckingProperty.comment = "Have the mod automatically check for new versions and notify the player if a new version is found. Default: " + Settings.Version.enableVersionCheckDefault;
+        Settings.Version.enableVersionCheck = enableVersionCheckingProperty.getBoolean();
+
+        Property versionChannelProperty = configuration.get(Configuration.CATEGORY_GENERAL, "versionChannel", Settings.Version.versionChannelDefault.toString());
+        versionChannelProperty.comment = "Which release channel to use for update checking. Channels are STABLE, DEV.Default: " + Settings.Version.versionChannelDefault.toString();
+        try {
+            Settings.Version.versionChannel = UpdateChecker.Channel.valueOf(versionChannelProperty.getString().toUpperCase());
+        } catch (Exception e) {
+            e.printStackTrace();
+            Settings.Version.versionChannel = Settings.Version.versionChannelDefault;
+            versionChannelProperty.set(Settings.Version.versionChannelDefault.toString());
+        }
+
+        // General
+        Property debugProperty = configuration.get(Configuration.CATEGORY_GENERAL, "debug", Settings.General.debugDefault);
+        debugProperty.comment = "Enable debug logging. Causes lots of unnecessary console spam useful only for debugging. Default: " + Settings.General.debugDefault;
+        Settings.General.debug = debugProperty.getBoolean();
+        if(configuration.hasChanged())
+            configuration.save();
+    }
+
+    @SubscribeEvent
+    public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {
+        if (event.modID.equalsIgnoreCase(Reference.MOD_ID)) {
+            loadConfig();
+        }
+    }
+}
