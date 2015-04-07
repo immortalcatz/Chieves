@@ -21,6 +21,8 @@ public class UpdateChecker {
 
     public void init() {
         new ThreadUpdateChecker();
+    public void init(Channel channel) {
+        new ThreadUpdateChecker(channel);
         FMLCommonHandler.instance().bus().register(this);
     }
 

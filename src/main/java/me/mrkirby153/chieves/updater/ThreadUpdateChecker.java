@@ -13,6 +13,9 @@ import java.net.URL;
 public class ThreadUpdateChecker extends Thread {
 
     public ThreadUpdateChecker() {
+    private UpdateChecker.Channel channel = UpdateChecker.Channel.STABLE;
+    public ThreadUpdateChecker(UpdateChecker.Channel channel) {
+        this.channel = channel;
         setName("Chieves update checker thread");
         setDaemon(true);
         start();
