@@ -52,6 +52,7 @@ minecraft {
     replaceIn "reference/Reference.java"
     replace "@VERSION@", "${project.version}.${System.getenv("BUILD_NUMBER") ?: 0}"
 }
+version = "${project.version}.${System.getenv("BUILD_NUMBER") ?: 0}"
 processResources
 {
     // this will ensure that this task is redone when the versions change.
