@@ -1,0 +1,10 @@
+version.updateFailed=Chieves failed to update! Check the log for more information
+version.updateFound=There is a new update to Chieves. The latest version is %s. You're running %s
+
+# ACHIEVEMENTS
+achievement.MostlyHarmless=Mostly Harmless
+achievement.MostlyHarmless.desc=Don't Panic
+achievement.DiggyDiggy=Diggy Diggy Hole
+achievement.DiggyDiggy.desc=I am a dwarf and I'm digging a hole...
+achievement.ItsRainingItsPouring=It's Raining, It's Pouring
+achievement.ItsRainingItsPouring.desc=The old man is snoring
